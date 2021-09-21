@@ -3,7 +3,6 @@ user_name=str(input('enter a username: '))
 password=str(input('enter a password: '))
 
 #asks if you want to keep what you entred, displayes what you entred
-#NOTE: FIX ':' AT THE END OF THIS
 save=str(input('save credentials? (y/n)' + 'username: ' + user_name + ' password: ' + password + ': '))
 
 #decision making for what happens if you save credentials
