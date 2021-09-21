@@ -5,7 +5,7 @@ password=str(input('enter a password: '))
 
 
 #asks if you want to keep what you entred, displayes what you entred
-save=str(input('save credentials? (y/n)' + 'username: ' + user_name + ' password: ' + password + ': '))
+save=str(input('save credentials? (y/n): '))
 
 
 
@@ -23,9 +23,21 @@ if save == 'y':
     #else it errors out and exits
     if user_name_check == user_name and password_check == password:
         print('correct credentials, saved loggin')
+
+        usernames = open("usernames.txt","w")
+        usernames.write(user_name,"\n")
+        usernames.close()
+
+        passwords = open("passwords.txt","w")
+        passwords.write(password,"\n")
+        passwords.close()
+
     else:
         print('invalid credentials, aborting...')
         quit()
+
+
+
 #however if you dont save it, the program will just exit without saving
 elif save == 'n':
     print('credentials not saved, exiting...')
