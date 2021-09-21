@@ -24,12 +24,14 @@ if save == 'y':
     if user_name_check == user_name and password_check == password:
         print('correct credentials, saved loggin')
 
+        write_username=user_name+'\n'
+        write_password=password+'\n'
         usernames = open("usernames.txt","w")
-        usernames.write(user_name,"\n")
+        usernames.writelines(write_username)
         usernames.close()
 
         passwords = open("passwords.txt","w")
-        passwords.write(password,"\n")
+        passwords.writelines(write_password)
         passwords.close()
 
     else:
