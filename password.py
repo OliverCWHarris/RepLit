@@ -1,10 +1,12 @@
+import time
 
-#declaring and entering username and password variables
-def enter_creds():
+
+
+def create():
 
     global user_name
     global password
-
+    #declaring and entering username and password variables
     user_name=str(input('enter a username: '))
     password=str(input('enter a password: '))
 
@@ -25,12 +27,7 @@ def enter_creds():
         print('syntax error, exiting...')
 
 
-
-#decision making for what happens if you save credentials
-def save():
-
-
-#ask you to reenter your credentials
+    #ask you to reenter your credentials
     print('verify credentials')
 
     user_name_check=str(input('enter username: '))
@@ -58,3 +55,44 @@ def save():
         quit()
 
 
+def login():
+    '2'
+
+
+
+def delete():
+    '3'
+
+
+
+def menu():
+
+    print('Welcome to [brand name] account setup!')
+    time.sleep(1)
+    print('Please select what you would like to do')
+    time.sleep(1)
+    print('1 - create new account')
+    time.sleep(1)
+    print('2 - log into existing account')
+    time.sleep(1)
+    print('3 - delete account')
+
+
+    global menu_choice
+    menu_choice=input(': ')
+
+    if menu_choice == '1':
+        create()
+    elif menu_choice == '2':
+        login()
+    elif menu_choice == '3':
+        delete()
+
+
+
+
+
+run=1
+if run == 1:
+    menu()
+    run=0
