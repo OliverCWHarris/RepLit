@@ -1,18 +1,37 @@
+
 #declaring and entering username and password variables
-user_name=str(input('enter a username: '))
-password=str(input('enter a password: '))
+def enter_creds():
+
+    global user_name
+    global password
+
+    user_name=str(input('enter a username: '))
+    password=str(input('enter a password: '))
 
 
 
-#asks if you want to keep what you entred, displayes what you entred
-save=str(input('save credentials? (y/n): '))
+    #asks if you want to keep what you entred, displayes what you entred
+    global save
+    save=str(input('save credentials? (y/n): '))
+
+    if save == 'y':
+        save()
+    
+    #however if you dont save it, the program will just exit without saving
+    elif save == 'n':
+        print('credentials not saved, exiting...')
+        quit()
+    else:
+        print('syntax error, exiting...')
 
 
 
 #decision making for what happens if you save credentials
-if save == 'y':
-    #ask you to reenter your credentials
-    print('verify credentials:')
+def save():
+
+
+#ask you to reenter your credentials
+    print('verify credentials')
 
     user_name_check=str(input('enter username: '))
 
@@ -39,10 +58,3 @@ if save == 'y':
         quit()
 
 
-
-#however if you dont save it, the program will just exit without saving
-elif save == 'n':
-    print('credentials not saved, exiting...')
-    quit()
-else:
-    print('syntax error, exiting...')
