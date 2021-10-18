@@ -1,7 +1,7 @@
 import time
 
 
-
+#creating account function
 def create():
 
     global user_name
@@ -12,7 +12,7 @@ def create():
 
 
 
-    #asks if you want to keep what you entred, displayes what you entred
+    #asks if you want to keep what you entred, asks you to resubmit for verification
     global save
     save=str(input('save credentials? (y/n): '))
 
@@ -32,13 +32,19 @@ def create():
 
             write_username=user_name+'\n'
             write_password=password+'\n'
-            usernames = open("usernames.txt","w")
+            usernames = open("usernames.txt","a")
+            usernames.writelines("\n")
             usernames.writelines(write_username)
             usernames.close()
 
-            passwords = open("passwords.txt","w")
+            passwords = open("passwords.txt","a")
+            passwords.writelines("\n")
             passwords.writelines(write_password)
             passwords.close()
+
+            menu()
+
+
 
         else:
             print('invalid credentials, aborting...')
@@ -56,7 +62,7 @@ def create():
 
     
 
-
+#login function
 def login():
     print("enter credentials:")
     global login_check_u
@@ -64,29 +70,30 @@ def login():
     global login_check_p
     login_check_p=str(input("enter pasword: "))
 
-    with open('usernames.txt') as f:
-        if login_check_u in f:
-            login_check_u=True
-    with open('passwords.txt') as f:
-        if login_check_p in f:
-            login_check_p=True
-    if login_check_u==True and login_check_p==True:
-        print("login successful!")
-        run=0
-        quit
+    #opening files for login checks
+
+    un=open("usernames.txt","r")
+    readfile=un.read()
+    pw=open("passwords.txt","r")
+    readfile2=pw.read()
+    if login_check_u in readfile and login_check_p in readfile2:
+        print("success! logged in.")
+        un.close()
+        pw.close()
     else:
         print("invalid credentials, exiting...")
-        run=0
-        quit
+    
+    #end of login checking
 
 
 
 
+#delete account function
 def delete():
-    '3'
+    print("sorry this isnt implemeted yet!")
 
 
-
+#menu printing function
 def menu():
 
     print('Welcome to [brand name] account setup!')
@@ -98,8 +105,18 @@ def menu():
     print('2 - log into existing account')
     time.sleep(1)
     print('3 - delete account')
+    menu_pt2()
 
 
+#dump function to show all usernames and passwords
+def dump():
+    with open('usernames.txt') as e:
+        print(e)
+    with open('passwords.txt') as f:
+        print(f)
+
+#decision making function for the menu
+def menu_pt2():
     global menu_choice
     menu_choice=input(': ')
 
@@ -109,11 +126,11 @@ def menu():
         login()
     elif menu_choice == '3':
         delete()
+    elif menu_choice == 'd':
+        dump()
 
 
 
 
-global run
-run=1
-if run == 1:
-    menu()
+
+menu()
