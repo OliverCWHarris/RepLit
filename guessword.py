@@ -1,6 +1,7 @@
 import time
 import os
 
+alphabet=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 
 def encrypt():
     global encrypted_word
@@ -44,28 +45,46 @@ def main():
 
 def guesses1():
     global guesses
+    global number
+    global encrypted_word
     guess=str(input("p1 enter first guess\n: "))
     if guess in word:
         print("correct! ",guess," is in the word")
+        number=alphabet.index(guess)
+        encrypted_word=word.replace("number",guess)
         guesses=guesses-1
+        if 'guesses'==0:
+            quit
         print(guesses)
+        guesses2()
     else:
         print("sorry, ",guess," is not in the word")
         guesses=guesses-1
+        if 'guesses'==0:
+            quit
         print(guesses)
+        guesses2()
 
 
 def guesses2():
     global guesses
+    global number
     guess=str(input("p2 enter first guess\n: "))
     if guess in word:
         print("correct! ",guess," is in the word")
         guesses=guesses-1
+        if 'guesses'==0:
+            quit
+        print(guesses)
+        guesses1()
     else:
         print("sorry, ",guess," is not in the word")
         guesses=guesses-1
+        if 'guesses'==0:
+            quit
+        print(guesses)
+        guesses1()
 
 
-if guesses==0:
-    quit
+
 main()
